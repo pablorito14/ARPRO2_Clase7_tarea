@@ -1,0 +1,21 @@
+import {ChakraProvider} from '@chakra-ui/react'
+
+import './App.css'
+import { Header } from './Components/Header/Header'
+import { Main } from './Components/Main/Main'
+// import { Main } from './Components/Main/Main_test'
+import { Footer } from './Components/Footer/Footer'
+import theme from './Theme'
+
+function App() {
+  console.log(theme)
+  return (
+    <ChakraProvider theme={theme}>
+      <Header />
+      <Main />
+      <Footer />
+    </ChakraProvider>
+  )
+}
+
+export default App
