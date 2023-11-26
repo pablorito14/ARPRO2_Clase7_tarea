@@ -6,7 +6,10 @@ const shadows = {
 
 const Container = defineStyleConfig({
   baseStyle:{
-    maxW: '6xl'
+    maxW: {
+      base: '6xl',
+      '2xl':'8xl'
+    }
   }
 })
 
