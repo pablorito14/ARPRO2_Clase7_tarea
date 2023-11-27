@@ -1,8 +1,16 @@
-# React + Vite
+# Tarea Clase 7
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción
+Galeria de imagenes con api de unsplash, formulario de busqueda y scroll infinito
 
-Currently, two official plugins are available:
+## Demo
+![demo-clase7-tarea-desktop](https://i.imgur.com/BxsC6j0.jpg)
+#### [Link demo](https://pablorito14.github.io/ARPRO2_Clase7_tarea/) 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Recursos
+- [React v18.2.0](https://es.react.dev/)
+- [Chakra-UI v2.8.2](https://chakra-ui.com/)
+- [Framer Motion v10.16.4](https://www.framer.com/motion/)
+- [React Infinite Scroll v6.1.0](https://www.npmjs.com/package/react-infinite-scroll-component)
+- [Unsplash API](https://unsplash.com/documentation)
+
