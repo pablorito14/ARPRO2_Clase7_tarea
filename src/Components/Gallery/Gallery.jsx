@@ -1,37 +1,27 @@
-import { Box, Image,Button, Text, Flex, Spinner } from "@chakra-ui/react"
+import { Box, Image,Button, Text, Flex, Spinner, useMediaQuery } from "@chakra-ui/react"
 import InfiniteScroll from "react-infinite-scroll-component";
 import { FaUpRightAndDownLeftFromCenter } from "react-icons/fa6";
+import {AnimatePresence, motion} from 'framer-motion'
+import { useEffect, useMemo, useState } from "react";
 
-const Gallery = ({images,moreResults,cargarMas,zoomIn}) => {
+const Gallery = ({images,moreResults,nextPage,zoomIn}) => {
+
+  const [isLargerThan768] = useMediaQuery('(min-width: 48em)')
   
-
   return(
     <>
 
     <InfiniteScroll 
             dataLength={images.length}
-            // loader={<Loading />}
-            // height={1000}
-            // height={window.visualViewport.height > 1000 && 800}
-            // height={800}
-            
-            next={cargarMas}
+            next={nextPage}
             hasMore={moreResults}
-            // scrollThreshold={.8}
-            // onScroll={() => console.log('asdasda')}
-            // pullDownToRefresh={true}
-            // refreshFunction={cargarMas}
-
             endMessage={
               <p style={{ textAlign: "center" }}>
                 <b>¡No hay mas resultados!</b>
               </p>
-              
             }
-            
             >
 
-                {/* <Masonro options={options}> */}
         <Box
           // mx='auto'
           display='flex'
@@ -45,47 +35,62 @@ const Gallery = ({images,moreResults,cargarMas,zoomIn}) => {
         >
 
           
-        
+        {/* <AnimatePresence mode="sync"> */}
         {images.map((image,index) => (
-          <Box key={index}
-          // boxSize={{base: '150px',md:'200px'}}
-          maxW={{base:'150px',md:'200px'}}
-          maxH={{base:'150px',md:'200px'}}
-          boxShadow='4px 4px 10px 2px rgb(54,51,51, 0.5)'
-          borderRadius='.5rem'
-          position='relative'
+          
+          
+            <Box key={index}
+            margin
+              // boxSize={{base: '150px',md:'200px'}}
+              maxW={{base:'150px',md:'200px'}}
+              maxH={{base:'150px',md:'200px'}}
+              
+              borderRadius='.5rem'
+              // position='relative'
+              onClick={() => zoomIn(image.id) }
+              
+            >
+              <motion.div
+                animate={{opacity: [0,1],scale:[0,1]  }}
+                // transition={{delay: (index-animationDelay)/50 }}
+
+                
+              >
+
+              
+<motion.div
+          // key={`motion-${index}`}
+          
+          // style={{
+          //   width:'200px',
+          //   height:'200px',
+          // }}
+
+          style={{
+              width:(isLargerThan768) ? '200px': '150px',
+              height:(isLargerThan768) ? '200px': '150px',
+            }}
+          
+          whileHover={{scale:1.1}}
+          whileTap={{scale:0.9}}
+          transition={{type: "spring", stiffness: 400, damping: 17 }}
           >
-
-            <Image src={image.urls.small}
-            boxSize='full' 
-            borderRadius='.5rem'
-            objectFit='cover'
-             />
-
-
-        <Text position='absolute' top='0' bottom='0' left='0' height='full' width='full'
-                  bg='rgba(0,0,0,0.3)'
-                  opacity={{base:1, lg:'0'}} 
-                  borderRadius='.5rem'
-                  display='flex' flexDirection='column' alignItems='center' justifyContent='center'
-                  _hover={{opacity:1}}
-                  color='whitesmoke'
-                  cursor='pointer'
-                  // onTouchEnd={() => zoomIn(image.id) }
-                  onClick={() => zoomIn(image.id) }
-                  >
-                    <FaUpRightAndDownLeftFromCenter />
-                    Ampliar
+              <Image src={image.urls.small}
+              boxSize='full' 
+              borderRadius='.5rem'
+              objectFit='cover'
+              boxShadow='2px 2px 5px 2px rgb(54,51,51, 0.5)'
+              />
 
 
-            </Text> 
-          </Box>
-          // <div key={index} >
-          //   <img src={image.urls.small} alt="" />
-          // </div>
+
+            </motion.div>
+            </motion.div>
+            </Box>
+          
         ))}
+        {/* </AnimatePresence> */}
         </Box>
-        {/* </Masonro> */}
       </InfiniteScroll>
       
     </>
