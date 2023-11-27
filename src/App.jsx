@@ -7,7 +7,6 @@ import { Footer } from './Components/Footer/Footer'
 import theme from './Theme'
 
 function App() {
-  console.log(theme)
   return (
     <ChakraProvider theme={theme}>
       <Header />

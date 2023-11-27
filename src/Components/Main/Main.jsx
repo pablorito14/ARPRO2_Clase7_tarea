@@ -106,11 +106,9 @@ const Main = () => {
   useEffect(() => {
     const getImages = async () => {
       try {
-        console.log(reload);
         if(!reload){
           return
         }
-        console.log(search)
         let data = [];
         if(search.length > 0){
           const url = `${URL_BASE}${URL_SEARCH}${ACCESS_KEY}&per_page=${perPage}&page=${page}&query=${search}`;
@@ -133,7 +131,6 @@ const Main = () => {
           setImages(images.concat(data))
           setLoading(false);
           setReload(false);
-          console.log({loadingReset},{loadingSearch})
           loadingReset && setloadingReset(false);
           loadingSearch && setloadingSearch(false)
 
